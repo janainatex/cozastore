@@ -1,0 +1,7 @@
+configurando o git 
+
+git config --global user.name Janainatex
+git config --global user.email @janainajapa05@gmail.com
+
+criar projeto 
+dotnet new mvc -o Cozastore 
