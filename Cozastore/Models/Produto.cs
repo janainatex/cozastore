@@ -55,4 +55,8 @@ public string Dimensao { get; set; }
 
 public Categoria Categoria { get; set; }
 
+public ICollection<Estoque> Estoque { get; set; }
+
+public ICollection<ProdutoFoto> Foto { get; set; }
+
 }
