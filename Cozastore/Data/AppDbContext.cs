@@ -26,7 +26,7 @@ public class AppDbContext : IdentityDbContext
         builder.Entity<Estoque>()
             .HasOne(e => e.Produto)
             .WithMany(p => p.Estoque)
-            .HasForeignKey(e => e.Produto);
+            .HasForeignKey(e => e.ProdutoId);
 
             builder.Entity<Estoque>()
              .HasOne(e => e.Cor)
