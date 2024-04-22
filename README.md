@@ -1,2 +1,2 @@
-# cozastore
-desenvolvimento de projeto Net 8 para criação da loja virtual
+# cozastore2024b
+Desenvolvimento de projeto .Net 8 para criação de loja virtual

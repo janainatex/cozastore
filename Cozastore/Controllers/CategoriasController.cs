@@ -5,6 +5,7 @@ using Cozastore.Data;
 using Cozastore.Models;
 
 namespace Cozastore.Controllers;
+
 public class CategoriasController : Controller
 {
     private readonly AppDbContext _context;
@@ -54,24 +55,23 @@ public class CategoriasController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Nome,Foto,Filtra,Banner,CategoriaPaiId")] Categoria categoria,IFormFile Foto)
+    public async Task<IActionResult> Create([Bind("Id,Nome,Foto,Filtrar,Banner,CategoriaPaiId")] Categoria categoria, IFormFile Foto)
     {
         if (ModelState.IsValid)
         {
             _context.Add(categoria);
             await _context.SaveChangesAsync();
-            if(Foto!=null)
+            if (Foto != null)
             {
                 string fileName = categoria.Id + Path.GetExtension(Foto.FileName);
                 string upload = Path.Combine(_host.WebRootPath, "img\\categorias");
                 string newFile = Path.Combine(upload, fileName);
-                using(var stream = new FileStream(newFile, FileMode.Create))
+                using (var stream = new FileStream(newFile, FileMode.Create))
                 {
-                   Foto.CopyTo(stream);
+                    Foto.CopyTo(stream);
                 }
                 categoria.Foto = "\\img\\categorias\\" + fileName;
-                 await _context.SaveChangesAsync();
-
+                await _context.SaveChangesAsync();
             }
 
             return RedirectToAction(nameof(Index));
@@ -102,7 +102,7 @@ public class CategoriasController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Foto,Filtra,Banner,CategoriaPaiId")] Categoria categoria)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Foto,Filtrar,Banner,CategoriaPaiId")] Categoria categoria, IFormFile NovaFoto)
     {
         if (id != categoria.Id)
         {
@@ -113,6 +113,19 @@ public class CategoriasController : Controller
         {
             try
             {
+                if (NovaFoto != null)
+                {
+                    string fileName = categoria.Id + Path.GetExtension(NovaFoto.FileName);
+                    string upload = Path.Combine(_host.WebRootPath, "img\\categorias");
+                    string newFile = Path.Combine(upload, fileName);
+                    using (var stream = new FileStream(newFile, FileMode.Create))
+                    {
+                        NovaFoto.CopyTo(stream);
+                    }
+                    categoria.Foto = "\\img\\categorias\\" + fileName;
+                    await _context.SaveChangesAsync();
+                }
+
                 _context.Update(categoria);
                 await _context.SaveChangesAsync();
             }

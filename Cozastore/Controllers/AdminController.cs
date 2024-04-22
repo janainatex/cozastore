@@ -1,25 +1,26 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cozastore.Controllers;
 
+[Authorize ( Roles ="Administrador")]
+public class AdminController : Controller
+{
+    private readonly ILogger<AdminController> _logger;
 
-    public class AdminController : Controller
+    public AdminController(ILogger<AdminController> logger)
     {
-        private readonly ILogger<AdminController> _logger;
-
-        public AdminController(ILogger<AdminController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
+        _logger = logger;
     }
+
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View("Error!");
+    }
+}

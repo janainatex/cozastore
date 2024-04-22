@@ -1,32 +1,32 @@
-configurando o git 
+Configurando o Git
+git config --global user.name GalloJunior
+git config --global user.email gallojunior@gmail.com 
 
-git config --global user.name Janainatex
-git config --global user.email @janainajapa05@gmail.com
+Criar o projeto
+dotnet new mvc -o Cozastore
 
-criar projeto 
-dotnet new mvc -o Cozastore 
+Pressione: Ctrl + Shift + P
+Digite: Nuget
+Pesquisar e Instalar:
+    - EntityFrameworkCore
+    - EntityFrameworkCore.Design
+    - EntityFrameworkCore.InMemory
+    - AspNet.Identity.EntityFrameworkCore
 
-CTrl + Shift + projeto
-digite nuget
 
--pesquisar e instalar
-Microsoft.EntityFrameworkCore
-Microsoft.EntityFrameworkCore.Design
-Microsoft.EntityFrameworkCore.InMemory
-AspNetCore.Identity.EntityFrameworkCore
+Instalar ferramenta de geração de código
+dotnet tool install -g dotnet-aspnet-codegenerator --version 8.0.1
 
-instalar ferramenta de geração de codigos 
-dotnet tool install -g dotnet-aspnet-codegenerator
 
+Pressione: Ctrl + Shift + P
+Digite: Nuget
+Pesquisar e Instalar:
+    Microsoft.VisualStudio.Web.CodeGeneration.Design
+    Microsoft.EntityFrameworkCore.Tools
+    Microsoft.EntityFrameworkCore.SqlServer
 
 
 Gerar Controller e Views de CRUD:
-dotnet-aspnet-codegenerator controller -name CoresController -m Cor -dc AppDbContext -udl --relativeFolderPath Controllers 
-dotnet-aspnet-codegenerator controller -name TamanhosController -m Tamanho -dc AppDbContext -udl --relativeFolderPath Controllers 
-dotnet-aspnet-codegenerator controller -name CategoriasController -m Categoria -dc AppDbContext -udl --relativeFolderPath Controllers 
-
-
-CTrl + Shift + projeto
-digite nuget
--pesquisar e instalar:
-    Microsoft.VisualStudio.Web.CodeGeneration.Design 
+dotnet-aspnet-codegenerator controller -name CoresController -m Cor -dc AppDbContext -udl --relativeFolderPath Controllers
+dotnet-aspnet-codegenerator controller -name TamanhosController -m Tamanho -dc AppDbContext -udl --relativeFolderPath Controllers
+dotnet-aspnet-codegenerator controller -name CategoriasController -m Categoria -dc AppDbContext -udl --relativeFolderPath Controllers

@@ -54,7 +54,7 @@ namespace Cozastore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Sigla,Nome,CodigoHexa")] Tamanho tamanho)
+        public async Task<IActionResult> Create([Bind("Id,Sigla,Nome")] Tamanho tamanho)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Cozastore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Sigla,Nome,CodigoHexa")] Tamanho tamanho)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Sigla,Nome")] Tamanho tamanho)
         {
             if (id != tamanho.Id)
             {
